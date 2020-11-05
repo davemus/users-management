@@ -19,9 +19,13 @@ function TableRow(props) {
 
 function Table(props) {  
   return (
-    <table>
-      <TableHeaderRow data={props.headerRow}/>
-      {props.rows.map((row) => <TableRow data={row}/>)}
+    <table className="cinereousTable">
+      <thead>
+        <TableHeaderRow data={props.headerRow}/>
+      </thead>
+      <tbody>
+        {props.rows.map((row) => <TableRow data={row}/>)}
+      </tbody>
     </table>
   )
 }
