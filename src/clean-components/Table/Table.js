@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { zip } from '../../utils';
 import './Table.css';
 
@@ -13,9 +14,9 @@ function TableHeaderRow(props) {
 function TableRow(props) {
   const row = zip(props.data, props.fieldNames)
   return (
-    <tr>
+    <Link to={'/edit/' + props.data[0]}>
       {row.map(([cell, name]) => <td key={name}>{cell}</td>)}
-    </tr>
+    </Link>
   )
 }
 
