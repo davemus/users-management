@@ -1,4 +1,11 @@
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Link,
+} from "react-router-dom";
 
 
 function TableHeaderRow(props) {
@@ -37,9 +44,48 @@ const rows = [
   [3, 'dmitriy.gordovitiy@yandex.com', 'dimon', 'Dmitriy', 'Gordovitiy'],
 ];
 
+function Edit() {
+  const { id } = useParams();
+
+  return (
+    <h1>Edit works! Id is {id}</h1>
+  )
+}
+
+function Create() {
+  return (
+    <h1>Create works!</h1>
+  )
+}
+
 function App() {
   return (
-    <Table headerRow={headerRow} rows={rows}/>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">List</Link>
+          </li>
+          <li>
+            <Link to="/edit/1">Edit 1</Link>
+          </li>
+          <li>
+            <Link to="/create">Create</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/edit/:id">
+          <Edit />
+        </Route>
+        <Route path="/create">
+          <Create />
+        </Route>
+        <Route path="/">
+          <Table headerRow={headerRow} rows={rows}/>
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
