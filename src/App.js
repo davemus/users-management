@@ -22,19 +22,6 @@ const rows = [
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">List</Link>
-          </li>
-          <li>
-            <Link to="/edit/1">Edit 1</Link>
-          </li>
-          <li>
-            <Link to="/create">Create</Link>
-          </li>
-        </ul>
-      </nav>
       <Switch>
         <Route path="/edit/:id">
           <Edit />

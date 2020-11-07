@@ -1,4 +1,5 @@
 import './UserForm.css';
+import Button from '../Button/Button.js';
 
 export function Input(props) {
   const id = 'user-form-input-' + props.name;
@@ -21,7 +22,7 @@ function UserForm() {
       <Input name="username" text="Username" />
       <Input name="firstname" text="First Name" />
       <Input name="lastname" text="Last Name" />
-      <button type="submit">Submit</button>
+      <Button text="Submit"/>
     </form>
   )
 }
