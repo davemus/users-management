@@ -1,6 +1,8 @@
+import UserForm from '../UserForm/UserForm.js';
+
 function Create() {
   return (
-    <h1>Create works!</h1>
+    <UserForm />
   )
 }
 
