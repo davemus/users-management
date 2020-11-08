@@ -1,0 +1,7 @@
+div.searchWrapper {
+  display: flex;
+}
+
+div.searchWrapper > input {
+  margin-right: 5px;
+}

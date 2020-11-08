@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { zip } from '../../utils';
 import './Table.css';
-import Button from '../Button/Button.js';
+import Button from '../Button';
+import Search from '../Search';
+
 
 function TableHeaderRow(props) {
   const row = zip(props.data, props.fieldNames)
@@ -26,9 +28,12 @@ function Table(props) {
 
   return (
     <>
-      <Link to="/create">
-        <Button text="Create User" />
-      </Link>
+      <div className="topPanel">
+        <Link to="/create">
+          <Button text="Create User" />
+        </Link>
+        <Search />
+      </div>
       <table className="cinereousTable">
         <thead>
           <TableHeaderRow data={props.headerRow} fieldNames={fieldNames} />

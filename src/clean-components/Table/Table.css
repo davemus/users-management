@@ -45,3 +45,9 @@ table a {
   color: unset;
   cursor: pointer;
 }
+
+.topPanel {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 3px; 
+}
