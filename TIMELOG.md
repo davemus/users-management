@@ -10,3 +10,4 @@ Timelog and results
 * 1 hour 10 minutes were spent on creating service for handling api requests
 * 25 minutes were spent on playing with spinner. Will take long break now
 * 40 minutes for use json server in our components
+* 1 hour 15 minutes to change behaviour of edit to show previous data, make basic validation of form with regexp and navigate to root page after changing/creating user
