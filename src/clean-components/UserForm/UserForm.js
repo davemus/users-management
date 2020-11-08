@@ -16,14 +16,15 @@ export function Input(props) {
   )
 }
 
-function formToDataRow(id, form) {
-  return [
-    id,
-    form.email.value,
-    form.username.value,
-    form.firstname.value,
-    form.lastname.value,
-  ];
+function formToUser(form) {
+  const asdf = {
+    'email': form.email.value,
+    'username': form.username.value,
+    'firstname': form.firstname.value,
+    'lastname': form.lastname.value,
+  };
+  console.log(asdf);
+  return asdf;
 }
 
 function UserForm(props) {
@@ -31,7 +32,7 @@ function UserForm(props) {
 
   function onSubmit($event) {
     $event.preventDefault();
-    props.onFormSubmit(formToDataRow(id, $event.target));
+    props.onFormSubmit(id, formToUser($event.target));
   }
 
   return (

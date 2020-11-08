@@ -10,9 +10,10 @@ class UsersService {
     static makeRequest(method, id=undefined, data=undefined) {
         const endpoint = id ? this.baseEndpoint + '/' + id : this.baseEndpoint;
         const requestOptions = Object.assign(
-            {'method': method, 'data': data},
+            {'method': method, 'body': JSON.stringify(data)},
             this.commonRequestOptions
         );
+        console.log(requestOptions);
         return fetch(endpoint, requestOptions).then(
             (response) => response.json(),
         );

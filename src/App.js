@@ -10,6 +10,8 @@ import {
 } from './clean-components'
 import React from 'react';
 import { copy } from './utils';
+import UsersService from './UsersService';
+import UserForm from "./clean-components/UserForm/UserForm";
 
 const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
 const initialusers = {
@@ -19,44 +21,54 @@ const initialusers = {
 }
 
 
+function userToTableRow(user) {
+  return [
+    user['id'],
+    user['email'],
+    user['username'],
+    user['firstname'],
+    user['lastname'],
+  ];
+}
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       lastId: 3,
-      users: copy(initialusers),
+      users: [],
     }
   }
+  
+  componentDidMount() {
+    this.reloadUsers();
+  }
 
-  onFormSubmit(dataRow) {
-    let id = dataRow[0];
-    let newLastId = this.state.lastId + 1;
-    let newUsers = copy(this.state.users);
-    if (id === undefined) {
-      id = newLastId;
-      dataRow[0] = id;
-    }
-    if (id !== newLastId && !(id in newUsers)) {
-      alert("Probably you've ventured wrong route");
-      return;
-    }
-    newUsers[id] = dataRow;
-    this.setState({
-      users: newUsers,
-      lastId: newLastId,
-    })
+  reloadUsers() {
+    UsersService.list().then((users) => {
+      this.setState({'users': users})
+    });
+  }
+
+  onUpdate(id, user) {
+    UsersService.update(id, user).then(() => this.reloadUsers());
+  }
+
+  onCreate(__, user) {
+    UsersService.create(user).then(() => this.reloadUsers());
   }
 
   render() {
-    const rows = Object.values(this.state.users);
+    const rows = this.state.users.map(userToTableRow);
     return (
       <Router>
         <Switch>
           <Route path="/edit/:id">
-            <Edit onFormSubmit={this.onFormSubmit.bind(this)} />
+            <Edit onFormSubmit={this.onUpdate.bind(this)} />
           </Route>
           <Route path="/create">
-            <Create onFormSubmit={this.onFormSubmit.bind(this)}/>
+            <Create onFormSubmit={this.onCreate.bind(this)}/>
           </Route>
           <Route path="/">
             <Table headerRow={headerRow} rows={rows}/>
