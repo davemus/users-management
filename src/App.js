@@ -15,7 +15,7 @@ const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
 const initialusers = {
   1: [1, 'sonya.hohlovskaia@gmail.com', 'supersofa', 'Sonia', 'Hohlovskaia'],
   2: [2, 'viktoria.simpleyarova@gmail.com', 'vivi', 'Viktoria', 'Simpleyarova'],
-  3: [3, 'dmitriy.gordovitiy@yandex.com', 'dimon', 'Dmitriy', 'Gordovitiy']
+  3: [3, 'dmitriy.gordovitiy@yandex.com', 'dimon', 'Dmitriy', 'Gordovitiy'],
 }
 
 
