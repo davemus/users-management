@@ -2,7 +2,7 @@ import './Button.css';
 
 function Button(props) {
     return (
-        <button className="cinereousButton" onClick={props.onClick}>{props.text}</button>
+        <button className="cinereousButton">{props.text}</button>
     )
 }
 

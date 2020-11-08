@@ -5,7 +5,7 @@ import {
 import UserForm from '../UserForm/UserForm.js';
 import Button from '../Button/Button.js';
 
-function Edit() {
+function Edit(props) {
   const { id } = useParams();
 
   return (
@@ -14,7 +14,7 @@ function Edit() {
       <Link to="/">
         <Button text="To List Page" />
       </Link>
-      <UserForm/>
+      <UserForm onFormSubmit={props.onFormSubmit} />
     </>
   )
 }
