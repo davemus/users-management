@@ -17,14 +17,12 @@ export function Input(props) {
 }
 
 function formToUser(form) {
-  const asdf = {
+  return {
     'email': form.email.value,
     'username': form.username.value,
     'firstname': form.firstname.value,
     'lastname': form.lastname.value,
   };
-  console.log(asdf);
-  return asdf;
 }
 
 function UserForm(props) {

@@ -13,7 +13,6 @@ class UsersService {
             {'method': method, 'body': JSON.stringify(data)},
             this.commonRequestOptions
         );
-        console.log(requestOptions);
         return fetch(endpoint, requestOptions).then(
             (response) => response.json(),
         );

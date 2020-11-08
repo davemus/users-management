@@ -1,7 +1,7 @@
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
+  withRouter,
 } from "react-router-dom";
 import {
   Create,
@@ -46,31 +46,35 @@ class App extends React.Component {
   }
 
   onUpdate(id, user) {
-    UsersService.update(id, user).then(() => this.reloadUsers());
+    UsersService.update(id, user).then(() => {
+      this.reloadUsers();
+      this.props.history.push('/');
+    });
   }
 
   onCreate(__, user) {
-    UsersService.create(user).then(() => this.reloadUsers());
+    UsersService.create(user).then(() => {
+      this.reloadUsers();
+      this.props.history.push('/');
+    });
   }
 
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
-      <Router>
-        <Switch>
-          <Route path="/edit/:id">
-            <Edit onFormSubmit={this.onUpdate.bind(this)} />
-          </Route>
-          <Route path="/create">
-            <Create onFormSubmit={this.onCreate.bind(this)}/>
-          </Route>
-          <Route path="/">
-            <Table headerRow={headerRow} rows={rows}/>
-          </Route>
-        </Switch>
-      </Router>
+      <Switch>
+        <Route path="/edit/:id">
+          <Edit onFormSubmit={this.onUpdate.bind(this)} />
+        </Route>
+        <Route path="/create">
+          <Create onFormSubmit={this.onCreate.bind(this)}/>
+        </Route>
+        <Route path="/">
+          <Table headerRow={headerRow} rows={rows}/>
+        </Route>
+      </Switch>
     )
   }
 }
 
-export default App;
+export default withRouter(App);
