@@ -2,8 +2,8 @@ import {
   useParams,
   Link,
 } from 'react-router-dom';
-import UserForm from '../UserForm/UserForm.js';
-import Button from '../Button/Button.js';
+import UserForm from '../UserForm';
+import Button from '../Button';
 
 function Edit(props) {
   const { id } = useParams();
