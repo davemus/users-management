@@ -7,3 +7,4 @@ Timelog and results
 * 1 hour 20 minutes were spent on tries to make state work. I will take a long break now
 * 40 minutes were spent to actually make state works after waking up
 * 40 minutes were spent on initial setup of json-server
+* 1 hour 10 minutes were spent on creating service for handling api requests
