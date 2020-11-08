@@ -8,3 +8,4 @@ Timelog and results
 * 40 minutes were spent to actually make state works after waking up
 * 40 minutes were spent on initial setup of json-server
 * 1 hour 10 minutes were spent on creating service for handling api requests
+* 25 minutes were spent on playing with spinner. Will take long break now
