@@ -12,7 +12,7 @@ export function Input(props) {
       </label>
       <br />
       <input id={id} name={props.name} type={props.type || 'text'} defaultValue={props.value}
-        pattern={props.pattern} required/>
+        pattern={props.pattern} title={props.title} required/>
       <br />
     </div>
   )
@@ -44,9 +44,11 @@ function UserForm(props) {
     <form className="cinereousForm" onSubmit={onSubmit}>
       <Input name="email" type="email" text="Email" value={userOrDummy.email} />
       <Input name="username" text="Username" value={userOrDummy.username}
-        pattern={USERNAME_REGEX} />
-      <Input name="firstname" text="First Name" value={userOrDummy.firstname} pattern={NAME_REGEX} />
-      <Input name="lastname" text="Last Name" value={userOrDummy.lastname} pattern={NAME_REGEX} />
+        pattern={USERNAME_REGEX} title="Only letters, digits and symbols -, _, $ are allowed" />
+      <Input name="firstname" text="First Name" value={userOrDummy.firstname}
+        pattern={NAME_REGEX} title="One uppercase and few lowercase letters" />
+      <Input name="lastname" text="Last Name" value={userOrDummy.lastname} pattern={NAME_REGEX} 
+        title="One uppercase and few lowercase letters" />
       <Button text="Submit" type="submit" />
     </form>
   )
