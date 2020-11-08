@@ -6,3 +6,4 @@ Timelog and results
 * 40 minutes for making navigation via buttons and table rows
 * 1 hour 20 minutes were spent on tries to make state work. I will take a long break now
 * 40 minutes were spent to actually make state works after waking up
+* 40 minutes were spent on initial setup of json-server
