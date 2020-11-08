@@ -12,7 +12,7 @@ export function Input(props) {
       </label>
       <br />
       <input id={id} name={props.name} type={props.type || 'text'} defaultValue={props.value}
-        required/>
+        pattern={props.pattern} required/>
       <br />
     </div>
   )
@@ -37,12 +37,16 @@ function UserForm(props) {
 
   const userOrDummy = props.user !== undefined ? props.user : {};
 
+  const USERNAME_REGEX = "[A-z0-9-_$]+";
+  const NAME_REGEX = "[A-Z][a-z]+"; 
+
   return (
     <form className="cinereousForm" onSubmit={onSubmit}>
       <Input name="email" type="email" text="Email" value={userOrDummy.email} />
-      <Input name="username" text="Username" value={userOrDummy.username} />
-      <Input name="firstname" text="First Name" value={userOrDummy.firstname} />
-      <Input name="lastname" text="Last Name" value={userOrDummy.lastname} />
+      <Input name="username" text="Username" value={userOrDummy.username}
+        pattern={USERNAME_REGEX} />
+      <Input name="firstname" text="First Name" value={userOrDummy.firstname} pattern={NAME_REGEX} />
+      <Input name="lastname" text="Last Name" value={userOrDummy.lastname} pattern={NAME_REGEX} />
       <Button text="Submit" type="submit" />
     </form>
   )
