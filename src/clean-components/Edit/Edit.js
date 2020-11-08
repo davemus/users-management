@@ -14,7 +14,8 @@ function Edit(props) {
       <Link to="/">
         <Button text="To List Page" />
       </Link>
-      <UserForm onFormSubmit={props.onFormSubmit} />
+      <UserForm user={props.users.find((user) => user['id'].toString() === id)}
+        onFormSubmit={props.onFormSubmit} />
     </>
   )
 }

@@ -64,7 +64,7 @@ class App extends React.Component {
     return (
       <Switch>
         <Route path="/edit/:id">
-          <Edit onFormSubmit={this.onUpdate.bind(this)} />
+          <Edit onFormSubmit={this.onUpdate.bind(this)} users={this.state.users} />
         </Route>
         <Route path="/create">
           <Create onFormSubmit={this.onCreate.bind(this)}/>
