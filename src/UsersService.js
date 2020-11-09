@@ -30,8 +30,19 @@ class UsersService {
         return this.makeRequest('PUT', id, data);
     }
 
-    static list() {
-        return this.makeRequest('GET');
+    static list(params) {
+        console.log(params);
+        let endpoint = this.baseEndpoint.slice();
+        const requestOptions = Object.assign(
+            {'method': 'GET'},
+            this.commonRequestOptions
+        );
+        if (params['search'] && params['searchField']) {
+            endpoint = `${endpoint}?${params['searchField']}_like=${params['search']}`;
+        }
+        return fetch(endpoint, requestOptions).then(
+            (response) => response.json(),
+        );
     }
 }
 

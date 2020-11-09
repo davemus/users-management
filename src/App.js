@@ -10,6 +10,7 @@ import {
 } from './clean-components';
 import React from 'react';
 import UsersService from './UsersService';
+import { copy } from './utils';
 
 
 const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
@@ -32,6 +33,8 @@ class App extends React.Component {
     this.state = {
       lastId: 3,
       users: [],
+      search: null,
+      searchField: null
     }
   }
   
@@ -40,7 +43,10 @@ class App extends React.Component {
   }
 
   reloadUsers() {
-    UsersService.list().then((users) => {
+    UsersService.list({
+      'searchField': this.state.searchField,
+      'search': this.state.search
+    }).then((users) => {
       this.setState({'users': users})
     });
   }
@@ -59,6 +65,14 @@ class App extends React.Component {
     });
   }
 
+  onSearch(fieldName, searchString) {
+    this.setState({
+      'searchField': fieldName,
+      'search': searchString
+    });
+    this.reloadUsers();
+  }
+
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
@@ -70,7 +84,7 @@ class App extends React.Component {
           <Create onFormSubmit={this.onCreate.bind(this)}/>
         </Route>
         <Route path="/">
-          <Table headerRow={headerRow} rows={rows}/>
+          <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)} />
         </Route>
       </Switch>
     )

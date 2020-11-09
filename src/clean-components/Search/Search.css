@@ -1,7 +1,23 @@
-div.searchWrapper {
+form.searchWrapper {
   display: flex;
 }
 
-div.searchWrapper > input {
+form.searchWrapper > input {
   margin-right: 5px;
+}
+
+form.searchWrapper > select {
+  margin-right: 5px;
+}
+
+select.cinereousSelect {
+  background: #948473;
+  background: -moz-linear-gradient(top, #afa396 0%, #9e9081 66%, #948473 100%);
+  background: -webkit-linear-gradient(top, #afa396 0%, #9e9081 66%, #948473 100%);
+  background: linear-gradient(to bottom, #afa396 0%, #9e9081 66%, #948473 100%);
+  font-size: 17px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: left;
+  border-left: 2px solid #948473;
 }

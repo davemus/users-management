@@ -32,7 +32,7 @@ function Table(props) {
         <Link to="/create">
           <Button text="Create User" />
         </Link>
-        <Search />
+        <Search onSearch={props.onSearch} />
       </div>
       <table className="cinereousTable">
         <thead>
