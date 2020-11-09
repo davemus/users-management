@@ -30,18 +30,26 @@ class UsersService {
         return this.makeRequest('PUT', id, data);
     }
 
-    static list(params) {
-        console.log(params);
+    static list(searchParams, pageParams) {
         let endpoint = this.baseEndpoint.slice();
         const requestOptions = Object.assign(
             {'method': 'GET'},
             this.commonRequestOptions
         );
-        if (params['search'] && params['searchField']) {
-            endpoint = `${endpoint}?${params['searchField']}_like=${params['search']}`;
+        endpoint = `${endpoint}?_page=${pageParams['page']}&_limit=${pageParams['pageSize']}`
+        if (searchParams['search'] && searchParams['searchField']) {
+            endpoint = `${endpoint}&${searchParams['searchField']}_like=${searchParams['search']}`;
         }
         return fetch(endpoint, requestOptions).then(
-            (response) => response.json(),
+            (response) => {
+                console.log(response.headers.get('link'));
+                let last = response.headers.get('link').split(',')[2];
+                const lastPageNumber = last.match(/(?<=_page=)\d+/)[0];
+                return Promise.all([
+                    response.json(),
+                    new Promise((resolve, reject) => { resolve(lastPageNumber); })
+                ]);
+            }
         );
     }
 }

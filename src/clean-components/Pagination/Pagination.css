@@ -1,0 +1,9 @@
+div.paginationWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+}
+
+.paginationWrapper > * {
+  margin: 5px;
+}

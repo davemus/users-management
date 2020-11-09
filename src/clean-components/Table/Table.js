@@ -3,6 +3,7 @@ import { zip } from '../../utils';
 import './Table.css';
 import Button from '../Button';
 import Search from '../Search';
+import Pagination from '../Pagination';
 
 
 function TableHeaderRow(props) {
@@ -42,6 +43,7 @@ function Table(props) {
           {props.rows.map((row) => <TableRow key={row[0]} data={row} fieldNames={fieldNames} />)}
         </tbody>
       </table>
+      <Pagination onPaginate={props.onPaginate} maxPageNumber={props.maxPageNumber}></Pagination>
     </>
   )
 }

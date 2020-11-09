@@ -34,7 +34,10 @@ class App extends React.Component {
       lastId: 3,
       users: [],
       search: null,
-      searchField: null
+      searchField: null,
+      pageSize: 2,
+      pageNumber: 1,
+      maxPageNumber: null,
     }
   }
   
@@ -45,9 +48,16 @@ class App extends React.Component {
   reloadUsers() {
     UsersService.list({
       'searchField': this.state.searchField,
-      'search': this.state.search
-    }).then((users) => {
-      this.setState({'users': users})
+      'search': this.state.search,
+    },
+    {
+      'pageSize': this.state.pageSize,
+      'page': this.state.pageNumber,
+    }).then(([users, maxPageNumber]) => {
+      this.setState({
+        'users': users,
+        'maxPageNumber': maxPageNumber,
+      })
     });
   }
 
@@ -73,6 +83,11 @@ class App extends React.Component {
     this.reloadUsers();
   }
 
+  onPaginate(pageNumber) {
+    this.setState({'pageNumber': pageNumber});
+    this.reloadUsers();
+  }
+
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
@@ -84,7 +99,9 @@ class App extends React.Component {
           <Create onFormSubmit={this.onCreate.bind(this)}/>
         </Route>
         <Route path="/">
-          <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)} />
+          <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
+            onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
+          />
         </Route>
       </Switch>
     )
