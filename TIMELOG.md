@@ -12,3 +12,4 @@ Timelog and results
 * 40 minutes for use json server in our components
 * 1 hour 15 minutes to change behaviour of edit to show previous data, make basic validation of form with regexp and navigate to root page after changing/creating user
 * 1 hour to try make search work
+* 30 minutes to actually make search work
