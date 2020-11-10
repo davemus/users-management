@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { zip } from '../../utils';
-import './Table.css';
+import './TablePage.css';
 import Button from '../Button';
 import Search from '../Search';
 import Pagination from '../Pagination';
@@ -25,16 +25,24 @@ function TableRow(props) {
 }
 
 function Table(props) {
+  props = props.outerProps;
   const fieldNames = props.headerRow.map((str) => str.toLowerCase());
+
+  if (props.rows.length < 1) {
+    return (
+      <div class="noData">
+        <p>
+          No users were found, matching your search, or server is offline.
+          Please reset your filter with button below.
+          If it doesn't work, refer to maintainer.
+        </p>
+        <Button text="Reset Filter" onClick={props.onResetFilter} />
+      </div>
+    )
+  }
 
   return (
     <>
-      <div className="topPanel">
-        <Link to="/create">
-          <Button text="Create User" />
-        </Link>
-        <Search onSearch={props.onSearch} />
-      </div>
       <table className="cinereousTable">
         <thead>
           <TableHeaderRow data={props.headerRow} fieldNames={fieldNames} />
@@ -53,4 +61,19 @@ function Table(props) {
   )
 }
 
-export default Table;
+function TablePage(props) {
+  return (
+    <>
+      <div className="topPanel">
+        <Link to="/create">
+          <Button text="Create User" />
+        </Link>
+        <Search onSearch={props.onSearch} searchField={props.searchField}
+          search={props.search} onResetFilter={props.onResetFilter} />
+      </div>
+      <Table outerProps={props} />
+    </>
+  )
+}
+
+export default TablePage;

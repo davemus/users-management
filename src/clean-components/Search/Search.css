@@ -2,12 +2,12 @@ form.searchWrapper {
   display: flex;
 }
 
-form.searchWrapper > input {
+form.searchWrapper > * {
   margin-right: 5px;
 }
 
-form.searchWrapper > select {
-  margin-right: 5px;
+form.searchWrapper:last-child {
+  margin-right: 0;
 }
 
 select.cinereousSelect {

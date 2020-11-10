@@ -12,8 +12,9 @@ function Search(props) {
           );
           event$.preventDefault();
       }}>
-      <Input name="search" required={false}/>
-      <select className="cinereousSelect" name="field">
+      { props.search && <Button text="Reset Filters" onClick={props.onResetFilter} /> }
+      <Input name="search" required={false} defaultValue={props.search} />
+      <select className="cinereousSelect" name="field" defaultValue={props.searchField}>
         <option value="email">Email</option>
         <option value="username">Username</option>
         <option value="firstname">First Name</option>

@@ -6,7 +6,7 @@ import {
 import {
   Create,
   Edit,
-  Table,
+  TablePage,
   Footer,
 } from './clean-components';
 import React from 'react';
@@ -62,7 +62,7 @@ class App extends React.Component {
             maxPageNumber: maxPageNumber,
             loading: false,
           })
-        });
+        }).catch(() => this.setState({'loading': false}));
       });
     }
 
@@ -95,6 +95,13 @@ class App extends React.Component {
     this.props.history.push(`/edit/${id}`)
   }
 
+  onResetFilter() {
+    this.setState({
+      search: null,
+      searchField: null,
+    }, () => this.reloadUsers());
+  }
+
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
@@ -117,9 +124,11 @@ class App extends React.Component {
               <Create onFormSubmit={this.onCreate.bind(this)}/>
             </Route>
             <Route path="/">
-              <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
+              <TablePage headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
                 onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
                 toDetails={this.onToDetails.bind(this)} pageNumber={this.state.pageNumber}
+                onResetFilter={this.onResetFilter.bind(this)} searchField={this.state.searchField}
+                search={this.state.search} 
               />
             </Route>
           </Switch>
