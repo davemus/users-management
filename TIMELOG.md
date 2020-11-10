@@ -17,3 +17,4 @@ Timelog and results
 * 30 minutes to fix bug with setState and bug in pagination
 * 30 minutes to make change / edit page looks prettier and small refactor
 * 10 minutes to create repository on github and push code there
+* 1 hour for making project prettier and adding footer
