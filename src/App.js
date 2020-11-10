@@ -79,13 +79,11 @@ class App extends React.Component {
     this.setState({
       'searchField': fieldName,
       'search': searchString
-    });
-    this.reloadUsers();
+    }, this.reloadUsers);
   }
 
   onPaginate(pageNumber) {
-    this.setState({'pageNumber': pageNumber});
-    this.reloadUsers();
+    this.setState({'pageNumber': pageNumber}, this.reloadUsers);
   }
 
   render() {
