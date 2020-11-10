@@ -16,3 +16,4 @@ Timelog and results
 * 1 hour 30 minutes to make buggy version of pagination
 * 30 minutes to fix bug with setState and bug in pagination
 * 30 minutes to make change / edit page looks prettier and small refactor
+* 10 minutes to create repository on github and push code there
