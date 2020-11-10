@@ -85,6 +85,10 @@ class App extends React.Component {
     this.setState({'pageNumber': pageNumber}, this.reloadUsers);
   }
 
+  onToDetails(id) {
+    this.props.history.push(`/edit/${id}`)
+  }
+
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
@@ -100,6 +104,7 @@ class App extends React.Component {
             <Route path="/">
               <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
                 onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
+                toDetails={this.onToDetails.bind(this)}
               />
             </Route>
           </Switch>

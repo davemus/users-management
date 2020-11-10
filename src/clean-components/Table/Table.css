@@ -40,9 +40,7 @@ table.cinereousTable tfoot {
 table.cinereousTable tfoot td {
   font-size: 16px;
 }
-table a {
-  display: table-row;
-  color: unset;
+table tr.clickable {
   cursor: pointer;
 }
 

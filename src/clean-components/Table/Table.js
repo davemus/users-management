@@ -18,9 +18,9 @@ function TableHeaderRow(props) {
 function TableRow(props) {
   const row = zip(props.data, props.fieldNames)
   return (
-    <Link to={'/edit/' + props.data[0]}>
+    <tr onClick={props.toDetails} className="clickable">
       {row.map(([cell, name]) => <td key={name}>{cell}</td>)}
-    </Link>
+    </tr>
   )
 }
 
@@ -40,7 +40,10 @@ function Table(props) {
           <TableHeaderRow data={props.headerRow} fieldNames={fieldNames} />
         </thead>
         <tbody>
-          {props.rows.map((row) => <TableRow key={row[0]} data={row} fieldNames={fieldNames} />)}
+          {props.rows.map((row) =>
+            <TableRow key={row[0]} data={row} fieldNames={fieldNames}
+              toDetails={() => props.toDetails(row[0])} />
+          )}
         </tbody>
       </table>
       <Pagination onPaginate={props.onPaginate} maxPageNumber={props.maxPageNumber}></Pagination>
