@@ -15,7 +15,7 @@ export function Input(props) {
       </label>
       <br />
       <input id={id} name={props.name} type={props.type || 'text'} defaultValue={props.value}
-        pattern={props.pattern} title={props.title} required/>
+        pattern={props.pattern} title={props.title} maxLength={props.maxlength} required/>
       <br />
     </div>
   )
@@ -51,13 +51,14 @@ function ChangeOrCreatePage(props) {
         </Link>
       </div>
       <form className="cinereousForm centered" onSubmit={onSubmit}>
-        <Input name="email" type="email" text="Email" value={userOrDummy.email} />
+        <Input name="email" type="email" text="Email" value={userOrDummy.email} maxlength="100" />
         <Input name="username" text="Username" value={userOrDummy.username}
-          pattern={USERNAME_REGEX} title="Only letters, digits and symbols -, _, $ are allowed" />
+          pattern={USERNAME_REGEX} title="Only letters, digits and symbols -, _, $ are allowed"
+          maxlength="10" />
         <Input name="firstname" text="First Name" value={userOrDummy.firstname}
-          pattern={NAME_REGEX} title="One uppercase and few lowercase letters" />
+          pattern={NAME_REGEX} title="One uppercase and few lowercase letters" maxlength="20"/>
         <Input name="lastname" text="Last Name" value={userOrDummy.lastname} pattern={NAME_REGEX} 
-          title="One uppercase and few lowercase letters" />
+          title="One uppercase and few lowercase letters" maxlength="20" />
         <Button text="Submit" type="submit" />
       </form>
     </>
