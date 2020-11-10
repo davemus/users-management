@@ -42,9 +42,12 @@ class UsersService {
         }
         return fetch(endpoint, requestOptions).then(
             (response) => {
-                console.log(response.headers.get('link'));
-                let last = response.headers.get('link').split(',')[2];
-                const lastPageNumber = last.match(/(?<=_page=)\d+/)[0];
+                const link = response.headers.get('link');
+                const lastLinkPartMatch = link.match(/[^,]+_page=(\d+)[^,]+; rel="last"/);
+                let lastPageNumber = 0;
+                if (lastLinkPartMatch) {
+                    lastPageNumber = lastLinkPartMatch[1];
+                }
                 return Promise.all([
                     response.json(),
                     new Promise((resolve, reject) => { resolve(lastPageNumber); })
