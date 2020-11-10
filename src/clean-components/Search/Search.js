@@ -1,5 +1,6 @@
 import Button from '../Button';
 import './Search.css';
+import Input from '../Input';
 
 function Search(props) {
   return (
@@ -11,7 +12,7 @@ function Search(props) {
           );
           event$.preventDefault();
       }}>
-      <input name="search" />
+      <Input name="search" required={false}/>
       <select className="cinereousSelect" name="field">
         <option value="email">Email</option>
         <option value="username">Username</option>
