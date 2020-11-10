@@ -40,9 +40,6 @@ table.cinereousTable tfoot {
 table.cinereousTable tfoot td {
   font-size: 16px;
 }
-table tr.clickable {
-  cursor: pointer;
-}
 
 .topPanel {
   display: flex;

@@ -46,7 +46,9 @@ function Table(props) {
           )}
         </tbody>
       </table>
-      <Pagination onPaginate={props.onPaginate} maxPageNumber={props.maxPageNumber}></Pagination>
+      <Pagination onPaginate={props.onPaginate} maxPageNumber={props.maxPageNumber}
+        pageNumber={props.pageNumber}>
+      </Pagination>
     </>
   )
 }

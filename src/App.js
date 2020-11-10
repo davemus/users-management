@@ -104,7 +104,7 @@ class App extends React.Component {
             <Route path="/">
               <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
                 onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
-                toDetails={this.onToDetails.bind(this)}
+                toDetails={this.onToDetails.bind(this)} pageNumber={this.state.pageNumber}
               />
             </Route>
           </Switch>

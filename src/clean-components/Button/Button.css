@@ -9,3 +9,8 @@ button.cinereousButton {
   text-align: left;
   border-left: 2px solid #948473;
 }
+
+button.cinereousButton:active,
+button.cinereousButton.active {
+  color: #DFC3A6;
+}
