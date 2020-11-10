@@ -14,3 +14,5 @@ Timelog and results
 * 1 hour to try make search work
 * 30 minutes to actually make search work
 * 1 hour 30 minutes to make buggy version of pagination
+* 30 minutes to fix bug with setState and bug in pagination
+* 30 minutes to make change / edit page looks prettier and small refactor
