@@ -11,6 +11,7 @@ import {
 } from './clean-components';
 import React from 'react';
 import UsersService from './UsersService';
+import Loader from 'react-loader-spinner'
 
 
 const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
@@ -37,6 +38,7 @@ class App extends React.Component {
       pageSize: 10,
       pageNumber: 1,
       maxPageNumber: null,
+      loading: false,
     }
   }
   
@@ -45,20 +47,24 @@ class App extends React.Component {
   }
 
   reloadUsers() {
-    UsersService.list({
-      'searchField': this.state.searchField,
-      'search': this.state.search,
-    },
-    {
-      'pageSize': this.state.pageSize,
-      'page': this.state.pageNumber,
-    }).then(([users, maxPageNumber]) => {
-      this.setState({
-        'users': users,
-        'maxPageNumber': maxPageNumber,
-      })
-    });
-  }
+    this.setState({loading: true}, () =>
+      {
+        UsersService.list({
+          searchField: this.state.searchField,
+          search: this.state.search,
+        },
+        {
+          pageSize: this.state.pageSize,
+          page: this.state.pageNumber,
+        }).then(([users, maxPageNumber]) => {
+          this.setState({
+            users: users,
+            maxPageNumber: maxPageNumber,
+            loading: false,
+          })
+        });
+      });
+    }
 
   onUpdate(id, user) {
     UsersService.update(id, user).then(() => {
@@ -93,6 +99,15 @@ class App extends React.Component {
     const rows = this.state.users.map(userToTableRow);
     return (
       <>
+        <div class="loaderWrapper">
+          <Loader
+            type="ThreeDots"
+            color="#948473"
+            height={100}
+            width={100}
+            visible={this.state.loading}
+          />
+        </div>
         <div class="paddingWrapper">
           <Switch>
             <Route path="/edit/:id">

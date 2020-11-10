@@ -14,3 +14,9 @@ body {
 .clickable {
   cursor: pointer;
 }
+
+.loaderWrapper {
+  position: absolute;
+  top: 30%;
+  left: calc((100% - 50px) / 2);
+}
