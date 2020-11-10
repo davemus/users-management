@@ -33,7 +33,7 @@ class App extends React.Component {
       users: [],
       search: null,
       searchField: null,
-      pageSize: 2,
+      pageSize: 10,
       pageNumber: 1,
       maxPageNumber: null,
     }

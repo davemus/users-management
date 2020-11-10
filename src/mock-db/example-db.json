@@ -20,6 +20,62 @@
       "username": "dimon",
       "firstname": "Dmitriy",
       "lastname": "Gordovitiy"
+    },
+    {
+      "email": "viktor.samoilov@yandex.com",
+      "username": "zeus",
+      "firstname": "Viktor",
+      "lastname": "Samoilov",
+      "id": 4
+    },
+    {
+      "email": "angelika.satinskaia@bing.net",
+      "username": "angel",
+      "firstname": "Angelika",
+      "lastname": "Satinskaia",
+      "id": 5
+    },
+    {
+      "email": "test.testovich@gmail.com",
+      "username": "itest",
+      "firstname": "Test",
+      "lastname": "Testovich",
+      "id": 6
+    },
+    {
+      "email": "michael.boiarskiy@gmail.com",
+      "username": "graywolf",
+      "firstname": "Michael",
+      "lastname": "Boiarskiy",
+      "id": 7
+    },
+    {
+      "email": "nekto.neizvestniy@bing.net",
+      "username": "nekto",
+      "firstname": "Nekto",
+      "lastname": "Neizvestniy",
+      "id": 8
+    },
+    {
+      "email": "sobaka.kusachaia@sosiski.net",
+      "username": "sobaka",
+      "firstname": "Sobaka",
+      "lastname": "Kusachaia",
+      "id": 9
+    },
+    {
+      "email": "kachok@yandex.net",
+      "username": "icanall",
+      "firstname": "Kachok",
+      "lastname": "Kachok",
+      "id": 10
+    },
+    {
+      "email": "drozdovud@gmail.com",
+      "username": "creator",
+      "firstname": "David",
+      "lastname": "Drozdov",
+      "id": 11
     }
   ]
 }
