@@ -10,7 +10,6 @@ import {
 } from './clean-components';
 import React from 'react';
 import UsersService from './UsersService';
-import { copy } from './utils';
 
 
 const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
@@ -31,7 +30,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastId: 3,
       users: [],
       search: null,
       searchField: null,

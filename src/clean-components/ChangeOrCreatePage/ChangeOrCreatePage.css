@@ -13,3 +13,12 @@ form.cinereousForm .field-wrapper {
 form.cinereousForm input {
   width: 250px;
 }
+
+.topPanel {
+  height: 30px;
+}
+
+.centered {
+  width: fit-content;
+  margin: auto;
+}
