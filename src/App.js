@@ -7,6 +7,7 @@ import {
   Create,
   Edit,
   Table,
+  Footer,
 } from './clean-components';
 import React from 'react';
 import UsersService from './UsersService';
@@ -87,19 +88,24 @@ class App extends React.Component {
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
-      <Switch>
-        <Route path="/edit/:id">
-          <Edit onFormSubmit={this.onUpdate.bind(this)} users={this.state.users} />
-        </Route>
-        <Route path="/create">
-          <Create onFormSubmit={this.onCreate.bind(this)}/>
-        </Route>
-        <Route path="/">
-          <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
-            onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
-          />
-        </Route>
-      </Switch>
+      <>
+        <div class="paddingWrapper">
+          <Switch>
+            <Route path="/edit/:id">
+              <Edit onFormSubmit={this.onUpdate.bind(this)} users={this.state.users} />
+            </Route>
+            <Route path="/create">
+              <Create onFormSubmit={this.onCreate.bind(this)}/>
+            </Route>
+            <Route path="/">
+              <Table headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
+                onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
+              />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </>
     )
   }
 }
