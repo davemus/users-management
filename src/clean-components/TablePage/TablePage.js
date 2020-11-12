@@ -31,7 +31,7 @@ function Table(props) {
 
   if (props.rows.length < 1) {
     return (
-      <div class="noData">
+      <div className="noData">
         <p>
           No users were found, matching your search, or server is offline.
           Please reset your filter with button below.

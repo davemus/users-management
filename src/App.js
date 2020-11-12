@@ -49,14 +49,16 @@ class App extends React.Component {
   reloadUsers() {
     this.setState({loading: true}, () =>
       {
-        UsersService.list({
-          searchField: this.state.searchField,
-          search: this.state.search,
-        },
-        {
-          pageSize: this.state.pageSize,
-          page: this.state.pageNumber,
-        }).then(([users, maxPageNumber]) => {
+        UsersService.list(
+          {
+            searchField: this.state.searchField,
+            search: this.state.search,
+          },
+          {
+            pageSize: this.state.pageSize,
+            page: this.state.pageNumber,
+          },
+        ).then(([users, maxPageNumber]) => {
           this.setState({
             users: users,
             maxPageNumber: maxPageNumber,
@@ -99,14 +101,14 @@ class App extends React.Component {
     this.setState({
       search: null,
       searchField: null,
-    }, () => this.reloadUsers());
+    }, this.reloadUsers);
   }
 
   render() {
     const rows = this.state.users.map(userToTableRow);
     return (
       <>
-        <div class="loaderWrapper">
+        <div className="loaderWrapper">
           <Loader
             type="ThreeDots"
             color="#948473"
@@ -115,7 +117,7 @@ class App extends React.Component {
             visible={this.state.loading}
           />
         </div>
-        <div class="paddingWrapper">
+        <div className="paddingWrapper">
           <Switch>
             <Route path="/edit/:id">
               <Edit onFormSubmit={this.onUpdate.bind(this)} users={this.state.users} />
