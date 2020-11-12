@@ -19,3 +19,6 @@ Timelog and results
 * 10 minutes to create repository on github and push code there
 * 1 hour for making project prettier and adding footer
 * 1 hour 30 minutes for adding spinner, reset filters, message if table is empty
+
+After review
+* 25 minutes for reading on js docs and writing ones for utils.js
