@@ -24,3 +24,4 @@ After review
 * 25 minutes for reading on js docs and writing ones for utils.js
 * 1 hour for adding propTypes fro all default imports in clean-components
 * 45 minutes for fixing inconsistencies with propTypes and fixing dependency on array structure
+* 40 minutes for making search form works as expected
