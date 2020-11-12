@@ -7,7 +7,7 @@ function Button(props) {
     className += ' active';
   }
   return (
-    <button className={className} onClick={props.onClick}>
+    <button className={className} onClick={props.onClick} type={props.type || 'button'}>
       {props.text}
     </button>
   )
@@ -17,6 +17,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   active: PropTypes.bool,
   onClick: PropTypes.func,
+  type: PropTypes.string,
 }
 
 export default Button;

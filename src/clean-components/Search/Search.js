@@ -12,16 +12,17 @@ function Search(props) {
             event$.target.search.value
           );
           event$.preventDefault();
-      }}>
-      { props.search && <Button text="Reset Filters" onClick={props.onResetFilter} /> }
-      <Input id="search-input" name="search" required={false} defaultValue={props.search} />
-      <select className="cinereousSelect" name="field" defaultValue={props.searchField}>
+      }}
+      onReset={props.onResetFilter}>
+      { props.search && <Button text="Reset Filters" type="reset" /> }
+      <Input id="search-input" name="search" required={true} defaultValue={props.search || ''} />
+      <select className="cinereousSelect" name="field" defaultValue={props.searchField} required>
         <option value="email">Email</option>
         <option value="username">Username</option>
         <option value="firstname">First Name</option>
         <option value="lastname">Last Name</option>
       </select>
-      <Button text="Search Users..." />
+      <Button text="Search Users..." type="submit" />
     </form>
   )
 }

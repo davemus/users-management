@@ -104,7 +104,9 @@ class App extends React.Component {
     this.setState({
       search: null,
       searchField: null,
-    }, this.reloadUsers);
+    }, () => {
+      this.reloadUsers();
+    });
   }
 
   render() {

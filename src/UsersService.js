@@ -34,7 +34,7 @@ class UsersService {
         let endpoint = this.baseEndpoint.slice();
         const requestOptions = Object.assign(
             {'method': 'GET'},
-            this.commonRequestOptions
+            this.commonRequestOptions,
         );
         endpoint = `${endpoint}?_page=${pageParams['page']}&_limit=${pageParams['pageSize']}`
         if (searchParams['search'] && searchParams['searchField']) {

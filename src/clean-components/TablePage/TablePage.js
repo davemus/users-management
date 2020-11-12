@@ -34,10 +34,9 @@ function Table(props) {
       <div className="noData">
         <p>
           No users were found, matching your search, or server is offline.
-          Please reset your filter with button below.
+          Please reset your search filters.
           If it doesn't work, refer to maintainer.
         </p>
-        <Button text="Reset Filter" onClick={props.onResetFilter} />
       </div>
     )
   }
