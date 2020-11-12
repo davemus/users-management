@@ -50,8 +50,8 @@ function Table(props) {
         </thead>
         <tbody>
           {props.rows.map((row) =>
-            <TableRow key={row[0]} data={row} fieldNames={fieldNames}
-              toDetails={() => props.toDetails(row[0])} />
+            <TableRow key={row.id} data={row.data} fieldNames={fieldNames}
+              toDetails={() => props.toDetails(row.id)} />
           )}
         </tbody>
       </table>
@@ -82,7 +82,10 @@ TablePage.propTypes = {
     PropType.string,
   ),
   rows: PropType.arrayOf(
-    PropType.array,
+    PropType.exact({
+      id: PropType.number,
+      data: PropType.array,
+    })
   ),
   onSearch: PropType.func.isRequired,
   onResetFilter: PropType.func.isRequired,

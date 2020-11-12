@@ -18,13 +18,16 @@ const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
 
 
 function userToTableRow(user) {
-  return [
-    user['id'],
-    user['email'],
-    user['username'],
-    user['firstname'],
-    user['lastname'],
-  ];
+  return {
+    id: user['id'],
+    data: [
+      user['id'],
+      user['email'],
+      user['username'],
+      user['firstname'],
+      user['lastname'],
+    ]
+  };
 }
 
 
@@ -105,7 +108,7 @@ class App extends React.Component {
   }
 
   render() {
-    const rows = this.state.users.map(userToTableRow);
+    const rowsWithId = this.state.users.map(userToTableRow);
     return (
       <>
         <div className="loaderWrapper">
@@ -126,7 +129,7 @@ class App extends React.Component {
               <Create onFormSubmit={this.onCreate.bind(this)}/>
             </Route>
             <Route path="/">
-              <TablePage headerRow={headerRow} rows={rows} onSearch={this.onSearch.bind(this)}
+              <TablePage headerRow={headerRow} rows={rowsWithId} onSearch={this.onSearch.bind(this)}
                 onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
                 toDetails={this.onToDetails.bind(this)} pageNumber={this.state.pageNumber}
                 onResetFilter={this.onResetFilter.bind(this)} searchField={this.state.searchField}
