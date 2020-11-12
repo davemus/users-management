@@ -46,11 +46,11 @@ class UsersService {
                 const lastLinkPartMatch = link.match(/[^,]+_page=(\d+)[^,]+; rel="last"/);
                 let lastPageNumber = 0;
                 if (lastLinkPartMatch) {
-                    lastPageNumber = lastLinkPartMatch[1];
+                    lastPageNumber = Number(lastLinkPartMatch[1]);
                 }
                 return Promise.all([
                     response.json(),
-                    new Promise((resolve, reject) => { resolve(lastPageNumber); })
+                    new Promise((resolve) => { resolve(lastPageNumber); })
                 ]);
             }
         );

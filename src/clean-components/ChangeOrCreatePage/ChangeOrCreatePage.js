@@ -5,6 +5,8 @@ import {
   useParams,
   Link,
 } from 'react-router-dom';
+import PropType from 'prop-types';
+import { UserPropType } from '../common-prop-types';
 
 export function InputWithLabel(props) {
   const id = 'user-form-input-' + props.name;
@@ -63,6 +65,11 @@ function ChangeOrCreatePage(props) {
       </form>
     </>
   )
+}
+
+ChangeOrCreatePage.propTypes = {
+  user: UserPropType,
+  onFormSubmit: PropType.func.isRequired,
 }
 
 export default ChangeOrCreatePage;

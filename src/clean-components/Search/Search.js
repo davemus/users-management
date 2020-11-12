@@ -1,6 +1,7 @@
 import Button from '../Button';
 import './Search.css';
 import Input from '../Input';
+import PropType from 'prop-types';
 
 function Search(props) {
   return (
@@ -13,7 +14,7 @@ function Search(props) {
           event$.preventDefault();
       }}>
       { props.search && <Button text="Reset Filters" onClick={props.onResetFilter} /> }
-      <Input name="search" required={false} defaultValue={props.search} />
+      <Input id="search-input" name="search" required={false} defaultValue={props.search} />
       <select className="cinereousSelect" name="field" defaultValue={props.searchField}>
         <option value="email">Email</option>
         <option value="username">Username</option>
@@ -23,6 +24,13 @@ function Search(props) {
       <Button text="Search Users..." />
     </form>
   )
+}
+
+Search.propTypes = {
+  onSearch: PropType.func.isRequired,
+  onResetFilter: PropType.func.isRequired,
+  search: PropType.string,
+  searchField: PropType.string,
 }
 
 export default Search;

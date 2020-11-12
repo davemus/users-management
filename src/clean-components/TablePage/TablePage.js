@@ -4,6 +4,7 @@ import './TablePage.css';
 import Button from '../Button';
 import Search from '../Search';
 import Pagination from '../Pagination';
+import PropType from 'prop-types';
 
 
 function TableHeaderRow(props) {
@@ -74,6 +75,21 @@ function TablePage(props) {
       <Table outerProps={props} />
     </>
   )
+}
+
+TablePage.propTypes = {
+  headerRow: PropType.arrayOf(
+    PropType.string,
+  ),
+  rows: PropType.arrayOf(
+    PropType.array,
+  ),
+  onSearch: PropType.func.isRequired,
+  onResetFilter: PropType.func.isRequired,
+  search: PropType.string,
+  searchField: PropType.string,
+  pageNumber: PropType.number,
+  maxPageNumber: PropType.number,
 }
 
 export default TablePage;
