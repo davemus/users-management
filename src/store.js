@@ -1,10 +1,37 @@
 import { createStore } from 'redux'
 
 
-const initialState = {};
+const initialState = {
+  'search': '',
+  'searchField': 'email',
+};
 
-function reducer(state = initialState, action) {}
+export function unsetFilter() {
+  return { 'type': 'filter/unset' }
+}
 
-const store = createStore(reducer);
+export function setFilter(search, searchField) {
+  return {
+    'type': 'filter/set',
+    'payload': { 'search': search, 'searchField': searchField }
+  }
+}
+
+function filterReducer(state = initialState, action) {
+  switch (action.type) {
+    case "filter/unset": {
+      return { ...initialState }
+    }
+    case "filter/set": {
+      return { ...action.payload }
+    }
+    default: return state
+  }
+}
+
+const store = createStore(
+  filterReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;

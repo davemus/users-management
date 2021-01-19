@@ -68,8 +68,7 @@ function TablePage(props) {
         <Link to="/create">
           <Button text="Create User" />
         </Link>
-        <Search onSearch={props.onSearch} searchField={props.searchField}
-          search={props.search} onResetFilter={props.onResetFilter} />
+        <Search />
       </div>
       <Table outerProps={props} />
     </>
@@ -86,10 +85,6 @@ TablePage.propTypes = {
       data: PropType.array,
     })
   ),
-  onSearch: PropType.func.isRequired,
-  onResetFilter: PropType.func.isRequired,
-  search: PropType.string,
-  searchField: PropType.string,
   pageNumber: PropType.number,
   maxPageNumber: PropType.number,
 }

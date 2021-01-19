@@ -2,15 +2,16 @@ import {
   Switch,
   Route,
   withRouter,
-} from "react-router-dom";
+} from "react-router-dom"
 import {
   Create,
   Edit,
   TablePage,
   Footer,
-} from './clean-components';
-import React from 'react';
-import UsersService from './UsersService';
+} from './clean-components'
+import React from 'react'
+import { connect } from 'react-redux'
+import UsersService from './UsersService'
 import Loader from 'react-loader-spinner'
 
 
@@ -36,8 +37,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       users: [],
-      search: null,
-      searchField: null,
       pageSize: 10,
       pageNumber: 1,
       maxPageNumber: null,
@@ -54,8 +53,8 @@ class App extends React.Component {
       {
         UsersService.list(
           {
-            searchField: this.state.searchField,
-            search: this.state.search,
+            searchField: this.props.searchField,
+            search: this.props.search,
           },
           {
             pageSize: this.state.pageSize,
@@ -85,13 +84,6 @@ class App extends React.Component {
     });
   }
 
-  onSearch(fieldName, searchString) {
-    this.setState({
-      'searchField': fieldName,
-      'search': searchString
-    }, this.reloadUsers);
-  }
-
   onPaginate(pageNumber) {
     this.setState({'pageNumber': pageNumber}, this.reloadUsers);
   }
@@ -111,6 +103,7 @@ class App extends React.Component {
 
   render() {
     const rowsWithId = this.state.users.map(userToTableRow);
+    this.reloadUsers()
     return (
       <>
         <div className="loaderWrapper">
@@ -131,7 +124,7 @@ class App extends React.Component {
               <Create onFormSubmit={this.onCreate.bind(this)}/>
             </Route>
             <Route path="/">
-              <TablePage headerRow={headerRow} rows={rowsWithId} onSearch={this.onSearch.bind(this)}
+              <TablePage headerRow={headerRow} rows={rowsWithId}
                 onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
                 toDetails={this.onToDetails.bind(this)} pageNumber={this.state.pageNumber}
                 onResetFilter={this.onResetFilter.bind(this)} searchField={this.state.searchField}
@@ -146,4 +139,11 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = (state) => {
+  return {
+    search: state.search,
+    searchField: state.searchField,
+  }
+}
+
+export default connect(mapStateToProps, {})(withRouter(App));
