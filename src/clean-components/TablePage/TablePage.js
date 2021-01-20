@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
-import { zip } from '../../utils';
-import './TablePage.css';
-import Button from '../Button';
-import Search from '../Search';
-import Pagination from '../Pagination';
-import PropType from 'prop-types';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { zip } from '../../utils'
+import './TablePage.css'
+import Button from '../Button'
+import Search from '../Search'
+import Pagination from '../Pagination'
+import PropType from 'prop-types'
 
 
 function TableHeaderRow(props) {
@@ -61,6 +62,25 @@ function Table(props) {
   )
 }
 
+function userToTableRow(user) {
+  return {
+    id: user['id'],
+    data: [
+      user['id'],
+      user['email'],
+      user['username'],
+      user['firstname'],
+      user['lastname'],
+    ]
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    'rows': state.users.users.map(userToTableRow)
+  }
+}
+
 function TablePage(props) {
   return (
     <>
@@ -89,4 +109,4 @@ TablePage.propTypes = {
   maxPageNumber: PropType.number,
 }
 
-export default TablePage;
+export default connect(mapStateToProps)(TablePage);

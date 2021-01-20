@@ -1,6 +1,3 @@
-import { createStore } from 'redux'
-
-
 const initialState = {
   'search': '',
   'searchField': 'email',
@@ -29,9 +26,4 @@ function filterReducer(state = initialState, action) {
   }
 }
 
-const store = createStore(
-  filterReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-export default store;
+export default filterReducer;

@@ -18,20 +18,6 @@ import Loader from 'react-loader-spinner'
 const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
 
 
-function userToTableRow(user) {
-  return {
-    id: user['id'],
-    data: [
-      user['id'],
-      user['email'],
-      user['username'],
-      user['firstname'],
-      user['lastname'],
-    ]
-  };
-}
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,26 +35,26 @@ class App extends React.Component {
   }
 
   reloadUsers() {
-    this.setState({loading: true}, () =>
-      {
-        UsersService.list(
-          {
-            searchField: this.props.searchField,
-            search: this.props.search,
-          },
-          {
-            pageSize: this.state.pageSize,
-            page: this.state.pageNumber,
-          },
-        ).then(([users, maxPageNumber]) => {
-          this.setState({
-            users: users,
-            maxPageNumber: maxPageNumber,
-            loading: false,
-          })
-        }).catch(() => this.setState({'loading': false}));
-      });
-    }
+    // this.setState({loading: true}, () =>
+    //   {
+    //     UsersService.list(
+    //       {
+    //         searchField: this.props.searchField,
+    //         search: this.props.search,
+    //       },
+    //       {
+    //         pageSize: this.state.pageSize,
+    //         page: this.state.pageNumber,
+    //       },
+    //     ).then(([users, maxPageNumber]) => {
+    //       this.setState({
+    //         users: users,
+    //         maxPageNumber: maxPageNumber,
+    //         loading: false,
+    //       })
+    //     }).catch(() => this.setState({'loading': false}));
+    //   });
+  }
 
   onUpdate(id, user) {
     UsersService.update(id, user).then(() => {
@@ -102,7 +88,6 @@ class App extends React.Component {
   }
 
   render() {
-    const rowsWithId = this.state.users.map(userToTableRow);
     this.reloadUsers()
     return (
       <>
@@ -124,12 +109,7 @@ class App extends React.Component {
               <Create onFormSubmit={this.onCreate.bind(this)}/>
             </Route>
             <Route path="/">
-              <TablePage headerRow={headerRow} rows={rowsWithId}
-                onPaginate={this.onPaginate.bind(this)} maxPageNumber={this.state.maxPageNumber}
-                toDetails={this.onToDetails.bind(this)} pageNumber={this.state.pageNumber}
-                onResetFilter={this.onResetFilter.bind(this)} searchField={this.state.searchField}
-                search={this.state.search} 
-              />
+              <TablePage headerRow={headerRow} toDetails={this.onToDetails.bind(this)} />
             </Route>
           </Switch>
         </div>

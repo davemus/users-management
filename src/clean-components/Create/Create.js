@@ -1,9 +1,11 @@
-import ChangeOrCreatePage from '../ChangeOrCreatePage';
-import PropType from 'prop-types';
+import { connect } from 'react-redux'
+import { createUser } from '../../store/users'
+import ChangeOrCreatePage from '../ChangeOrCreatePage'
+import PropType from 'prop-types'
 
 function Create(props) {
   return (
-    <ChangeOrCreatePage onFormSubmit={props.onFormSubmit} />
+    <ChangeOrCreatePage onFormSubmit={(user) => props.createUser(user)} />
   )
 }
 
@@ -11,4 +13,4 @@ Create.propTypes = {
   onFormSubmit: PropType.func.isRequired,
 }
 
-export default Create;
+export default connect(() => {}, { createUser })(Create);

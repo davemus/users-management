@@ -3,7 +3,7 @@ import Button from '../Button';
 import './Search.css';
 import Input from '../Input';
 import PropType from 'prop-types';
-import { setFilter, unsetFilter } from '../../store';
+import { setFilter, unsetFilter } from '../../store/filter';
 
 const mapStateToProps = (state) => {
   return {

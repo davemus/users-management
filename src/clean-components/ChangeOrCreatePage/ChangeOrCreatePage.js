@@ -33,17 +33,21 @@ function formToUser(form) {
 }
 
 function ChangeOrCreatePage(props) {
-  const { id } = useParams();
+  const { id } = useParams()
 
   function onSubmit($event) {
-    $event.preventDefault();
-    props.onFormSubmit(id, formToUser($event.target));
+    $event.preventDefault()
+    const user = formToUser($event.target)
+    if (id) {
+      user.id = Number(id)
+    }
+    props.onFormSubmit(user)
   }
 
-  const userOrDummy = props.user !== undefined ? props.user : {};
+  const userOrDummy = props.user !== undefined ? props.user : {}
 
-  const USERNAME_REGEX = "[A-z0-9-_$]+";
-  const NAME_REGEX = "[A-Z][a-z]+"; 
+  const USERNAME_REGEX = "[A-z0-9-_$]+"
+  const NAME_REGEX = "[A-Z][a-z]+"
 
   return (
     <>
