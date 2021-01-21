@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router-dom'
 import './ChangeOrCreatePage.css';
 import Button from '../Button';
 import Input from '../Input';
@@ -42,6 +43,7 @@ function ChangeOrCreatePage(props) {
       user.id = Number(id)
     }
     props.onFormSubmit(user)
+    props.history.push('/')
   }
 
   const userOrDummy = props.user !== undefined ? props.user : {}
@@ -76,4 +78,4 @@ ChangeOrCreatePage.propTypes = {
   onFormSubmit: PropType.func.isRequired,
 }
 
-export default ChangeOrCreatePage;
+export default withRouter(ChangeOrCreatePage);

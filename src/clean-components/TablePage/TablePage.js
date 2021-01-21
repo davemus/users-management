@@ -6,6 +6,8 @@ import Button from '../Button'
 import Search from '../Search'
 import Pagination from '../Pagination'
 import PropType from 'prop-types'
+import { setPage } from '../../store/pagination'
+import { setFilter, unsetFilter } from '../../store/filter'
 
 
 function TableHeaderRow(props) {
@@ -76,8 +78,13 @@ function userToTableRow(user) {
 }
 
 function mapStateToProps(state) {
+  const sliceStart = state.pagination.limit * state.pagination.page
+  const sliceEnd = sliceStart + state.pagination.limit
+  const usersFilter = user => user[state.filter.searchField].includes(state.filter.search)
+  const filteredUsers = state.users.users.filter(usersFilter)
   return {
-    'rows': state.users.users.map(userToTableRow)
+    'rows': filteredUsers.map(userToTableRow).slice(sliceStart, sliceEnd),
+    'maxPageNumber': Math.ceil(filteredUsers.length / state.pagination.limit),
   }
 }
 
@@ -109,4 +116,4 @@ TablePage.propTypes = {
   maxPageNumber: PropType.number,
 }
 
-export default connect(mapStateToProps)(TablePage);
+export default connect(mapStateToProps, {setPage, setFilter, unsetFilter})(TablePage);
