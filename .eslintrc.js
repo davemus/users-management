@@ -17,6 +17,11 @@ module.exports = {  // eslint-disable-line
   'plugins': [
     'react'
   ],
+  'settings': {
+    'react': {
+      'version': 'detect'
+    }
+  },
   'rules': {
     'indent': [
       'error',
