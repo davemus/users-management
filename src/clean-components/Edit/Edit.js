@@ -23,9 +23,8 @@ function Edit(props) {
 }
 
 Edit.propTypes = {
-  users: PropType.arrayOf(
-    UserPropType,
-  )
+  users: PropType.arrayOf(UserPropType).isRequired,
+  updateUser: PropType.func.isRequired,
 }
 
 export default connect(mapStateToProps, { updateUser })(Edit)

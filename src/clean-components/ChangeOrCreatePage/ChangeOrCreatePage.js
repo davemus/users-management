@@ -24,6 +24,16 @@ export function InputWithLabel(props) {
   )
 }
 
+InputWithLabel.propTypes = {
+  text: PropType.string.isRequired,
+  name: PropType.string.isRequired,
+  type: PropType.string,
+  pattern: PropType.string,
+  value: PropType.string,
+  title: PropType.string,
+  maxlength: PropType.maxLength,
+}
+
 function formToUser(form) {
   return {
     'email': form.email.value,
@@ -76,6 +86,7 @@ function ChangeOrCreatePage(props) {
 ChangeOrCreatePage.propTypes = {
   user: UserPropType,
   onFormSubmit: PropType.func.isRequired,
+  history: PropType.object,
 }
 
 export default withRouter(ChangeOrCreatePage)

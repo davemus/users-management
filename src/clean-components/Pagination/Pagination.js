@@ -18,8 +18,9 @@ function Pagination(props) {
 }
 
 Pagination.propTypes = {
-  pageNumber: PropType.number,
-  maxPageNumber: PropType.number,
+  pageNumber: PropType.number.isRequired,
+  maxPageNumber: PropType.number.isRequired,
+  setPage: PropType.func.isRequired,
 }
 
 function mapStateToProps(state) {

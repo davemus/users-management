@@ -10,7 +10,7 @@ function Create(props) {
 }
 
 Create.propTypes = {
-  onFormSubmit: PropType.func.isRequired,
+  createUser: PropType.func.isRequired,
 }
 
 export default connect(() => {}, { createUser })(Create)

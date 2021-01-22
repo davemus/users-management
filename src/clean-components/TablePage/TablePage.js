@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom' 
+
 import { zip } from '../../utils'
 import './TablePage.css'
 import Button from '../Button'
@@ -19,6 +21,11 @@ function TableHeaderRow(props) {
   )
 }
 
+TableHeaderRow.propTypes = {
+  data: PropType.arrayOf(PropType.string),
+  fieldNames: PropType.arrayOf(PropType.string),
+}
+
 function TableRow(props) {
   const row = zip(props.data, props.fieldNames)
   return (
@@ -26,6 +33,12 @@ function TableRow(props) {
       {row.map(([cell, name]) => <td key={name}>{cell}</td>)}
     </tr>
   )
+}
+
+TableRow.propTypes = {
+  data: PropType.arrayOf(PropType.string),
+  fieldNames: PropType.arrayOf(PropType.string),
+  toDetails: PropType.func,
 }
 
 function Table(props) {
@@ -38,7 +51,7 @@ function Table(props) {
         <p>
           No users were found, matching your search, or server is offline.
           Please reset your search filters.
-          If it doesn't work, refer to maintainer.
+          If it doesn&apos;t work, refer to maintainer.
         </p>
       </div>
     )
@@ -53,7 +66,7 @@ function Table(props) {
         <tbody>
           {props.rows.map((row) =>
             <TableRow key={row.id} data={row.data} fieldNames={fieldNames}
-              toDetails={() => props.toDetails(row.id)} />
+              toDetails={() => props.history.push(`/edit/${row.id}`)} />
           )}
         </tbody>
       </table>
@@ -62,6 +75,21 @@ function Table(props) {
       </Pagination>
     </>
   )
+}
+
+Table.propTypes = {
+  headerRow: PropType.arrayOf(
+    PropType.string,
+  ),
+  rows: PropType.arrayOf(
+    PropType.exact({
+      id: PropType.number,
+      data: PropType.array,
+    })
+  ),
+  pageNumber: PropType.number.isRequired,
+  maxPageNumber: PropType.number.isRequired,
+  history: PropType.func.isRequired,
 }
 
 function userToTableRow(user) {
@@ -85,6 +113,7 @@ function mapStateToProps(state) {
   return {
     'rows': filteredUsers.map(userToTableRow).slice(sliceStart, sliceEnd),
     'maxPageNumber': Math.ceil(filteredUsers.length / state.pagination.limit),
+    'headerRow': ['ID', 'Email', 'Username', 'First Name', 'Last Name'],
   }
 }
 
@@ -102,18 +131,6 @@ function TablePage(props) {
   )
 }
 
-TablePage.propTypes = {
-  headerRow: PropType.arrayOf(
-    PropType.string,
-  ),
-  rows: PropType.arrayOf(
-    PropType.exact({
-      id: PropType.number,
-      data: PropType.array,
-    })
-  ),
-  pageNumber: PropType.number,
-  maxPageNumber: PropType.number,
-}
+TablePage.propTypes = Table.propTypes
 
-export default connect(mapStateToProps, {setPage, setFilter, unsetFilter})(TablePage)
+export default withRouter(connect(mapStateToProps, {setPage, setFilter, unsetFilter})(TablePage))

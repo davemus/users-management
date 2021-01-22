@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import PropType from 'prop-types'
 import Button from '../Button'
 import './Search.css'
 import Input from '../Input'
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 function Search(props) {
-  const onReset = event$ => {
+  const onReset = () => {
     props.unsetFilter()
   }
   const onSubmit = event$ => {
@@ -35,6 +36,13 @@ function Search(props) {
       <Button text="Search Users..." type="submit" />
     </form>
   )
+}
+
+Search.propTypes = {
+  search: PropType.string,
+  searchField: PropType.string.isRequired,
+  setFilter: PropType.func.isRequired,
+  unsetFilter: PropType.func.isRequired,
 }
 
 export default connect(mapStateToProps, { setFilter, unsetFilter })(Search)
