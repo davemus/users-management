@@ -13,13 +13,13 @@ export function setLimit(limit) {
 
 function paginationReducer(state = initialState, action) {
   switch (action.type) {
-    case 'pagination/setLimit': {
-      return {...state, 'limit': action.payload}
-    }
-    case 'pagination/setPage': {
-      return {...state, 'page': action.payload}
-    }
-    default: return state
+  case 'pagination/setLimit': {
+    return {...state, 'limit': action.payload}
+  }
+  case 'pagination/setPage': {
+    return {...state, 'page': action.payload}
+  }
+  default: return state
   }
 }
 

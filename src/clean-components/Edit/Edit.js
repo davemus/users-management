@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 }
 
 function Edit(props) {
-  const { id } = useParams();
+  const { id } = useParams()
   const user = props.users.find((user) => user['id'] === Number(id))
 
   return (
@@ -28,4 +28,4 @@ Edit.propTypes = {
   )
 }
 
-export default connect(mapStateToProps, { updateUser })(Edit);
+export default connect(mapStateToProps, { updateUser })(Edit)

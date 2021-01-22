@@ -1,5 +1,5 @@
-import './Input.css';
-import PropType from 'prop-types';
+import './Input.css'
+import PropType from 'prop-types'
 
 function Input(props) {
   return (
@@ -20,4 +20,4 @@ Input.propTypes = {
   required: PropType.bool,
 }
 
-export default Input;
+export default Input

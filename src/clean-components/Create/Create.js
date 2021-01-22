@@ -13,4 +13,4 @@ Create.propTypes = {
   onFormSubmit: PropType.func.isRequired,
 }
 
-export default connect(() => {}, { createUser })(Create);
+export default connect(() => {}, { createUser })(Create)

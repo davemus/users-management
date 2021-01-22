@@ -12,7 +12,7 @@ function Pagination(props) {
         pageNumbers.length > 1 && pageNumbers.map((pageNumber) => (
           <Button key={'pagination-' + pageNumber} active={props.pageNumber + 1 === pageNumber}
             onClick={() => props.setPage(pageNumber - 1)} text={pageNumber.toString()} />
-      ))}
+        ))}
     </div>
   )
 }

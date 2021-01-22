@@ -1,10 +1,10 @@
-import './Button.css';
-import PropTypes from 'prop-types';
+import './Button.css'
+import PropTypes from 'prop-types'
 
 function Button(props) {
-  let className = 'cinereousButton clickable';
+  let className = 'cinereousButton clickable'
   if (props.active) {
-    className += ' active';
+    className += ' active'
   }
   return (
     <button className={className} onClick={props.onClick} type={props.type || 'button'}>
@@ -20,4 +20,4 @@ Button.propTypes = {
   type: PropTypes.string,
 }
 
-export default Button;
+export default Button

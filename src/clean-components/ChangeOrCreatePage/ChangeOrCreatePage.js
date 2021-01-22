@@ -1,16 +1,16 @@
 import { withRouter } from 'react-router-dom'
-import './ChangeOrCreatePage.css';
-import Button from '../Button';
-import Input from '../Input';
+import './ChangeOrCreatePage.css'
+import Button from '../Button'
+import Input from '../Input'
 import {
   useParams,
   Link,
-} from 'react-router-dom';
-import PropType from 'prop-types';
-import { UserPropType } from '../common-prop-types';
+} from 'react-router-dom'
+import PropType from 'prop-types'
+import { UserPropType } from '../common-prop-types'
 
 export function InputWithLabel(props) {
-  const id = 'user-form-input-' + props.name;
+  const id = 'user-form-input-' + props.name
   return (
     <div className="field-wrapper">
       <label htmlFor={id}>
@@ -30,7 +30,7 @@ function formToUser(form) {
     'username': form.username.value,
     'firstname': form.firstname.value,
     'lastname': form.lastname.value,
-  };
+  }
 }
 
 function ChangeOrCreatePage(props) {
@@ -48,8 +48,8 @@ function ChangeOrCreatePage(props) {
 
   const userOrDummy = props.user !== undefined ? props.user : {}
 
-  const USERNAME_REGEX = "[A-z0-9-_$]+"
-  const NAME_REGEX = "[A-Z][a-z]+"
+  const USERNAME_REGEX = '[A-z0-9-_$]+'
+  const NAME_REGEX = '[A-Z][a-z]+'
 
   return (
     <>
@@ -78,4 +78,4 @@ ChangeOrCreatePage.propTypes = {
   onFormSubmit: PropType.func.isRequired,
 }
 
-export default withRouter(ChangeOrCreatePage);
+export default withRouter(ChangeOrCreatePage)

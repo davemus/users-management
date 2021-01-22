@@ -1,7 +1,7 @@
 const initialState = {
   'search': '',
   'searchField': 'email',
-};
+}
 
 export function unsetFilter() {
   return { 'type': 'filter/unset' }
@@ -16,14 +16,14 @@ export function setFilter(search, searchField) {
 
 function filterReducer(state = initialState, action) {
   switch (action.type) {
-    case "filter/unset": {
-      return { ...initialState }
-    }
-    case "filter/set": {
-      return { ...action.payload }
-    }
-    default: return state
+  case 'filter/unset': {
+    return { ...initialState }
+  }
+  case 'filter/set': {
+    return { ...action.payload }
+  }
+  default: return state
   }
 }
 
-export default filterReducer;
+export default filterReducer

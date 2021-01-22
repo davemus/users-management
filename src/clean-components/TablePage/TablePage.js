@@ -29,8 +29,8 @@ function TableRow(props) {
 }
 
 function Table(props) {
-  props = props.outerProps;
-  const fieldNames = props.headerRow.map((str) => str.toLowerCase());
+  props = props.outerProps
+  const fieldNames = props.headerRow.map((str) => str.toLowerCase())
 
   if (props.rows.length < 1) {
     return (
@@ -74,7 +74,7 @@ function userToTableRow(user) {
       user['firstname'],
       user['lastname'],
     ]
-  };
+  }
 }
 
 function mapStateToProps(state) {
@@ -116,4 +116,4 @@ TablePage.propTypes = {
   maxPageNumber: PropType.number,
 }
 
-export default connect(mapStateToProps, {setPage, setFilter, unsetFilter})(TablePage);
+export default connect(mapStateToProps, {setPage, setFilter, unsetFilter})(TablePage)

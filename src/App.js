@@ -2,7 +2,7 @@ import {
   Switch,
   Route,
   withRouter,
-} from "react-router-dom"
+} from 'react-router-dom'
 import {
   Create,
   Edit,
@@ -15,12 +15,12 @@ import UsersService from './UsersService'
 import Loader from 'react-loader-spinner'
 
 
-const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name'];
+const headerRow = ['ID', 'Email', 'Username', 'First Name', 'Last Name']
 
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       users: [],
       pageSize: 10,
@@ -31,7 +31,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    this.reloadUsers();
+    this.reloadUsers()
   }
 
   reloadUsers() {
@@ -58,20 +58,20 @@ class App extends React.Component {
 
   onUpdate(id, user) {
     UsersService.update(id, user).then(() => {
-      this.reloadUsers();
-      this.props.history.push('/');
-    });
+      this.reloadUsers()
+      this.props.history.push('/')
+    })
   }
 
   onCreate(__, user) {
     UsersService.create(user).then(() => {
-      this.reloadUsers();
-      this.props.history.push('/');
-    });
+      this.reloadUsers()
+      this.props.history.push('/')
+    })
   }
 
   onPaginate(pageNumber) {
-    this.setState({'pageNumber': pageNumber}, this.reloadUsers);
+    this.setState({'pageNumber': pageNumber}, this.reloadUsers)
   }
 
   onToDetails(id) {
@@ -83,8 +83,8 @@ class App extends React.Component {
       search: null,
       searchField: null,
     }, () => {
-      this.reloadUsers();
-    });
+      this.reloadUsers()
+    })
   }
 
   render() {
@@ -126,4 +126,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {})(withRouter(App));
+export default connect(mapStateToProps, {})(withRouter(App))

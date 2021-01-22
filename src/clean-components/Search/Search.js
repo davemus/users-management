@@ -37,4 +37,4 @@ function Search(props) {
   )
 }
 
-export default connect(mapStateToProps, { setFilter, unsetFilter })(Search);
+export default connect(mapStateToProps, { setFilter, unsetFilter })(Search)
