@@ -33,6 +33,7 @@ module.exports = {  // eslint-disable-line
     'semi': [
       'error',
       'never'
-    ]
+    ],
+    'react/react-in-jsx-scope': 'off',
   }
 }
